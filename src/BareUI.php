@@ -51,7 +51,7 @@ class BareUI
             trigger_error("The file $view could not be found.");
         }
 
-        extract(array_merge($data, ['template' => self::class]));
+        extract(array_merge($data, ['template' => self::class], static::$config["params"]));
 
         ob_start();
 

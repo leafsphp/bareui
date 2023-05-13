@@ -23,8 +23,11 @@
     "autoload": {
         "psr-4": {
             "Leaf\\": "src"
-        }
+        },
+        "files": [
+            "src/scripts.php"
+        ]
     },
     "minimum-stability": "dev",
-	"prefer-stable": true
+    "prefer-stable": true
 }

@@ -1,5 +1,7 @@
 <?php
 
 if (class_exists('\Leaf\App')) {
-    \Leaf\View::attach(\Leaf\BareUI::class, 'template');
+    app()->attach(function () {
+        \Leaf\View::attach(\Leaf\BareUI::class, 'template');
+    });
 }

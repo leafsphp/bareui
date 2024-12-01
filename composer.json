@@ -29,5 +29,20 @@
         ]
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "leafs/alchemy": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.65"
+    },
+    "scripts": {
+        "alchemy": "./vendor/bin/alchemy setup",
+        "test": "./vendor/bin/alchemy setup --test",
+        "lint": "./vendor/bin/alchemy setup --lint",
+        "actions": "./vendor/bin/alchemy setup --actions"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
 }

@@ -6,20 +6,20 @@ namespace Leaf;
  * Bare UI
  * ------------
  * Leaf templating language focused on speed, speed and more speed.
- * 
+ *
  * @since v2.4.4
  * @author Michael Darko <mickdd22@gmail.com>
  */
 class BareUI
 {
     private static $config = [
-        "path" => null,
-        "params" => [],
+        'path' => null,
+        'params' => [],
     ];
 
     /**
      * Configure bare UI
-     * 
+     *
      * @param array|string $item The item(s) to configure
      * @param mixed $value Value of config. Ignored if $item is array.
      */
@@ -34,40 +34,40 @@ class BareUI
 
     /**
      * Render a bare UI
-     * 
+     *
      * @param string $view The view to render
      * @param array $data The params to pass into UI
      */
     public static function render(string $view, array $data = [])
     {
         $view = static::getView($view);
-        $path = "./";
+        $path = './';
 
         if (class_exists("\Leaf\Config")) {
-            $path = Config::get("views.path");
+            $path = Config::get('views.path');
         }
 
-        if (!file_exists($file = (static::$config["path"] ?? $path) . "/$view")) {
+        if (!file_exists($file = (static::$config['path'] ?? $path) . "/$view")) {
             trigger_error("The file $view could not be found.");
         }
 
-        extract(array_merge($data, ['template' => self::class], static::$config["params"]));
+        extract(array_merge($data, ['template' => self::class], static::$config['params']));
 
         ob_start();
 
         try {
-            include($file);
+            include $file;
         } catch (\Throwable $th) {
             trigger_error($th);
         }
 
-        return (ob_get_clean());
+        return ob_get_clean();
     }
 
     private static function getView($view)
     {
-        if (!strpos($view, ".view.php")) {
-            $view .= ".view.php";
+        if (!strpos($view, '.view.php')) {
+            $view .= '.view.php';
         }
 
         return $view;

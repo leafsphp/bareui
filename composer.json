@@ -9,7 +9,7 @@
         "php",
         "framework"
     ],
-    "homepage": "https://leafphp.netlify.app/#/",
+    "homepage": "https://leafphp.dev/docs/frontend/bareui",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -30,15 +30,22 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "require": {
+        "php": "^8.2"
+    },
     "require-dev": {
-        "leafs/alchemy": "^2.1",
-        "friendsofphp/php-cs-fixer": "^3.65"
+        "leafs/alchemy": "v5.x-dev",
+        "friendsofphp/php-cs-fixer": "^3.66",
+        "pestphp/pest": "*"
     },
     "scripts": {
-        "alchemy": "./vendor/bin/alchemy setup",
-        "test": "./vendor/bin/alchemy setup --test",
-        "lint": "./vendor/bin/alchemy setup --lint",
-        "actions": "./vendor/bin/alchemy setup --actions"
+        "alchemy": "@php vendor/bin/alchemy all",
+        "test": "@php vendor/bin/alchemy test",
+        "lint": "@php vendor/bin/alchemy lint",
+        "fmt": "@php vendor/bin/alchemy fmt",
+        "analyse": "@php vendor/bin/alchemy analyse",
+        "refactor": "@php vendor/bin/alchemy refactor",
+        "ci": "@php vendor/bin/alchemy ci"
     },
     "config": {
         "allow-plugins": {
